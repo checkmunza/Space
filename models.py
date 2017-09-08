@@ -49,6 +49,7 @@ class World:
     def __init__(self, width, height):
         self.width = width
         self.height = height
+        self.score = 0
  
         self.ship = Ship(self, 100, 100)
         self.gold = Gold(self, 400, 400)
@@ -60,5 +61,6 @@ class World:
     def update(self, delta):
         self.ship.update(delta)
 
-        if self.ship.hit(self.gold, 15):
+        if self.ship.hit(self.gold, 10):
             self.gold.random_location()
+            self.score += 1
